@@ -19,6 +19,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// ゲームウィンドウの作成
 	win = WinApp::GetInstance();
 	win->CreateGameWindow("GE2D_01_アナン_ショウゴ_AL3");
+	//test
 
 	// DirectX初期化処理
 	dxCommon = DirectXCommon::GetInstance();
