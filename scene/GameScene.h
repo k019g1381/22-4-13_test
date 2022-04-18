@@ -11,11 +11,13 @@
 #include "WorldTransform.h"
 #include <DirectXMath.h>
 
+
 /// <summary>
 /// ゲームシーン
 /// </summary>
 class GameScene {
 
+	
   public: // メンバ関数
 	/// <summary>
 	/// コンストクラタ
@@ -51,4 +53,20 @@ class GameScene {
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>
+	///
+	//テクスチャハンドル
+	uint32_t textureHundle_ = 0;
+	uint32_t soundDataHundle_ = 0;
+	uint32_t voiceHundle_ = 0; 
+	uint32_t value_ = 0;
+
+	//スプライト
+	Sprite* sprite_ = nullptr;
+	// 3Dモデル
+	Model* model_ = nullptr;
+
+	//ワールドトランスフォーム
+	WorldTransform worldTransfrom_;
+	//ビュープロジェクション
+	ViewProjection viewRrojection_;
 };

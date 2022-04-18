@@ -176,6 +176,9 @@
   <ItemGroup>
     <None Include="Resources\shaders\Sprite.hlsli" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\01_02_確認\Resources\mario.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
