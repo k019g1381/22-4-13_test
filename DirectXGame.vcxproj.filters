@@ -202,4 +202,9 @@
       <Filter>シェーダー ファイル</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\Downloads\01_02_確認\Resources\mario.jpg">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
