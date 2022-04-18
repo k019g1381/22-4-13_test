@@ -1,8 +1,8 @@
 ﻿#pragma once
 
 #include "Audio.h"
-#include "DirectXCommon.h"
 #include "DebugText.h"
+#include "DirectXCommon.h"
 #include "Input.h"
 #include "Model.h"
 #include "SafeDelete.h"
@@ -11,13 +11,11 @@
 #include "WorldTransform.h"
 #include <DirectXMath.h>
 
-
 /// <summary>
 /// ゲームシーン
 /// </summary>
 class GameScene {
 
-	
   public: // メンバ関数
 	/// <summary>
 	/// コンストクラタ
@@ -57,7 +55,7 @@ class GameScene {
 	//テクスチャハンドル
 	uint32_t textureHundle_ = 0;
 	uint32_t soundDataHundle_ = 0;
-	uint32_t voiceHundle_ = 0; 
+	uint32_t voiceHundle_ = 0;
 	uint32_t value_ = 0;
 
 	//スプライト
