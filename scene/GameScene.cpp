@@ -1,6 +1,7 @@
 ﻿#include "GameScene.h"
 #include "TextureManager.h"
 #include <cassert>
+#include <random>
 
 using namespace DirectX;
 
@@ -22,50 +23,68 @@ void GameScene::Initialize() {
 	//テクスチャハンドルを指定して読み込む
 	textureHundle_ = TextureManager::Load("mario.jpg");
 	soundDataHundle_ = audio_->LoadWave("se_sad03.wav");
-	//
-	audio_->PlayWave(soundDataHundle_);
+	
+	
 
-	//音声再生
-	voiceHundle_ = audio_->PlayWave(soundDataHundle_, true);
+	//課題1-2
+	////音声再生
+	// audio_->PlayWave(soundDataHundle_);
+	//voiceHundle_ = audio_->PlayWave(soundDataHundle_, true);
 
 	//スプライトの生成
 	sprite_ = Sprite::Create(textureHundle_, {100, 50});
 	model_ = Model::Create();
 
+	worldTransfrom_.scale_ = {5.0f, 5.0f, 5.0f};
+	worldTransfrom_.rotation_ = {XM_PI/4.0f,XM_PI/4.0f,0.0f};
+	worldTransfrom_.translation_ = {10.0f, 10.0f,10.0f};
+
 	worldTransfrom_.Initialize();
 	viewRrojection_.Initialize();
+
+	////乱数シード生成器
+	//std::random_device seed_gen;
+	////メルセンスツイスター
+	//std::mt19937_64 engine(seed_gen());
+
+	////乱数範囲
+	//std::uniform_real_distribution<float> rotDist(0.0f, XM_2PI);
+	//std::uniform_real_distribution<float> posDist(10.0f, -10.0f);
+
+	//worldTransfrom_.translation_ = {0.0f, 10.0f, 0.0f};
 }
 
 void GameScene::Update() {
-	//スプライトの今の座標を習得
-	XMFLOAT2 position = sprite_->GetPosition();
-	//座標2.0移動
-	position.x += 2.0f;
-	position.y += 1.0f;
 
+	//課題1-2
+	////スプライトの今の座標を習得
+	//XMFLOAT2 position = sprite_->GetPosition();
+	////座標2.0移動
+	//position.x += 2.0f;
+	//position.y += 1.0f;
 	//スプライトの移動
-	sprite_->SetPosition(position);
+	//sprite_->SetPosition(position);
 
-	//スペースキーを押した瞬間
-	if (input_->TriggerKey(DIK_SPACE)) {
-		audio_->StopWave(voiceHundle_);
-	}
-
+	//課題１－２
+	////スペースキーを押した瞬間
+	//if (input_->TriggerKey(DIK_SPACE)) {
+	//	audio_->StopWave(voiceHundle_);
+	//}
 	//デバッグテキストの表示
 	// debugText_->Print("Kogakuin ni oreha iru.",50, 30, 1.0f);
-
 	//書式指定付き表示
 	// debugText_->SetPos(50,70);
 	// debugText_->Printf(" year:%d ", 2001);
+	////変数の値をインクリメント
+	//value_++;
 
-	//変数の値をインクリメント
-	value_++;
+	////値を含んだ文字列
+	//std::string strDebug = std::string("Value:") + std::to_string(value_);
 
-	//値を含んだ文字列
-	std::string strDebug = std::string("Value:") + std::to_string(value_);
+	////デバッグテキストの表示
+	//debugText_->Print(strDebug, 50, 50, 1.0f);
 
-	//デバッグテキストの表示
-	debugText_->Print(strDebug, 50, 50, 1.0f);
+
 }
 
 void GameScene::Draw() {
@@ -107,11 +126,25 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
 	/// </summary>
-	sprite_->Draw();
+	//sprite_->Draw();
 
 	// デバッグテキストの描画
 	debugText_->DrawAll(commandList);
-	//
+	debugText_->SetPos(50, 70);
+	debugText_->Printf(
+	  "translation:(%f,%f,%f)", worldTransfrom_.translation_.x, worldTransfrom_.translation_.y,
+	  worldTransfrom_.translation_.y);
+
+	debugText_->SetPos(50, 90);
+	debugText_->Printf(
+	  "rotation:(%f,%f,%f)", worldTransfrom_.rotation_.x, worldTransfrom_.rotation_.y,
+	  worldTransfrom_.rotation_.y);
+
+	debugText_->SetPos(50, 110);
+	debugText_->Printf(
+	  "translation:(%f,%f,%f)", worldTransfrom_.scale_.x, worldTransfrom_.scale_.y,
+	  worldTransfrom_.scale_.y);
+	
 	// スプライト描画後処理
 	Sprite::PostDraw();
 
