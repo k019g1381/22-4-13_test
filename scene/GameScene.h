@@ -17,6 +17,20 @@
 class GameScene {
 
   public: // メンバ関数
+
+	//
+	  enum PartId 
+	  {
+		  Root,
+		  Spine,
+		  Chest,
+		  Head,
+		  ArmL,
+		  ArmR,
+		  Hip,
+		  LegL,
+		  LegR
+		};
 	/// <summary>
 	/// コンストクラタ
 	/// </summary>
